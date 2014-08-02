@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Web Storage example</title>
+  </head>
+  <body>
+    <h1>Web Storage example</h1>
+    <form id="storage-form">
+      <label>Name:
+        <input type="text" id="name" placeholder="Ludwig von Mises">
+      </label>
+      <input type="submit" value="Salvar">
+    </form>
+    <script type="text/javascript">
+      var body = document.querySelector('body');
+      var formElement = document.getElementById('storage-form');
+      var nameElement = document.getElementById('name');
+
+      function saveName(value){
+        window.localStorage.setItem('name', value);
+      }
+
+      function getName(){
+        return window.localStorage.getItem('name');
+      }
+
+      formElement.addEventListener('submit', function(){
+        saveName(nameElement.value);
+      });
+
+      window.onload = function(){
+        nameElement.value = getName();
+      };
+
+    </script>
+  </body>
+</html>
